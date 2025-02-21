@@ -1,13 +1,15 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Foundation\Application;
 use app\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function(){
-    return view('index');
+    return view('welcome');
 });
+Route::get('/',[HomeController::class, 'home'])->name('');
 
 //Route::get('/', [IndexController::class, 'index']);
 
