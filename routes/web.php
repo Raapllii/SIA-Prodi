@@ -1,15 +1,25 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Foundation\Application;
 use app\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function(){
-    return view('welcome');
-});
-Route::get('/',[HomeController::class, 'home'])->name('');
+Route::get('/',[HomeController::class, 'home'])->name('home');
+Route::get('/about',[HomeController::class, 'about'])->name('about');
+Route::get('/dosen',[HomeController::class, 'dosen'])->name('dosen');
+Route::get('/berita',[HomeController::class, 'berita'])->name('berita');
+Route::get('/contact',[HomeController::class, 'contact'])->name('contact');
+
+Route::get('/admin',[AuthController::class, 'index'])->name('login');
+Route::get('/login',[AuthController::class, 'authenticate']);
+Route::get('/logout',[AuthController::class,'logout']);
+
+Route::get('/dashboard',[AdminController::class, 'index'])->name('dashboard')->middleware('auth');
+
 
 //Route::get('/', [IndexController::class, 'index']);
 
