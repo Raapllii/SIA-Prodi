@@ -8,17 +8,18 @@ use app\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/',[HomeController::class, 'home'])->name('home');
-Route::get('/about',[HomeController::class, 'about'])->name('about');
-Route::get('/dosen',[HomeController::class, 'dosen'])->name('dosen');
-Route::get('/berita',[HomeController::class, 'berita'])->name('berita');
-Route::get('/contact',[HomeController::class, 'contact'])->name('contact');
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/dosen', [HomeController::class, 'dosen'])->name('dosen');
+Route::get('/berita', [HomeController::class, 'berita'])->name('berita');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
-Route::get('/admin',[AuthController::class, 'index'])->name('login');
-Route::get('/login',[AuthController::class, 'authenticate']);
-Route::get('/logout',[AuthController::class,'logout']);
+Route::get('/admin', [AuthController::class, 'index'])->name('login');
+Route::get('/login', [AuthController::class, 'authenticate']);
+Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::get('/dashboard',[AdminController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [AdminController::class, 'store'])->middleware('auth');
+Route::get('/list', [AdminController::class, 'store'])->name('list');
 
 
 //Route::get('/', [IndexController::class, 'index']);
@@ -41,5 +42,3 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });*/
-
-

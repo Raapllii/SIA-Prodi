@@ -11,7 +11,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('backend.dashboard');
+        //
     }
 
     /**
@@ -27,7 +27,12 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $username = $request->session()->get('username');
+        if ($request->is('dashboard')) {
+            return view('backend.dashboard', compact('username'));
+        } elseif ($request->is('list')) {
+            return view('backend.apply-job', compact('username')); // Pastikan Anda memiliki view 'backend.list'
+        }
     }
 
     /**

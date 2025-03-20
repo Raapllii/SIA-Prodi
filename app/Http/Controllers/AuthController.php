@@ -12,7 +12,7 @@ class AuthController extends Controller
         return view('auth.index');
     }
 
-    public function authenticate(Request $request)  
+    public function authenticate(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
@@ -21,16 +21,17 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            $request->session()->put('username', Auth::user()->name);
             return redirect()->intended('/dashboard');
         }
-        
+
         return back()->with('loginError', 'Login gagal, Priksa kembali Akun Anda!');
     }
 
-    public function logout(request $request) 
+    public function logout(request $request)
     {
         Auth::logout();
-        
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

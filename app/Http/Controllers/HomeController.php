@@ -6,19 +6,24 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    function home(){
+    function home()
+    {
         return view('Frontand.home');
     }
-    function about(){
+    function about()
+    {
         return view('Frontand.about');
     }
-    function dosen(){
+    function dosen()
+    {
         return view('Frontand.dosen');
     }
-    function berita(){
+    function berita()
+    {
         return view('Frontand.berita');
     }
-    function contact(){
+    function contact()
+    {
         return view('Frontand.contact');
     }
 }
