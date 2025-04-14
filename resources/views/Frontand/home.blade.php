@@ -4,55 +4,58 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section">
         <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="carousel-item active">
-                <img src="frontend/assets/img/hero-carousel/hero-carousel-1.jpg" alt="">
-            </div><!-- End Carousel Item -->
-
-            <div class="carousel-item">
-                <img src="frontend/assets/img/hero-carousel/hero-carousel-2.jpg" alt="">
-            </div><!-- End Carousel Item -->
-
-            <div class="carousel-item">
-                <img src="frontend/assets/img/hero-carousel/hero-carousel-3.jpg" alt="">
-            </div><!-- End Carousel Item -->
-
-            <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+            @foreach ($images as $image)
+                <div class="carousel-item {{$loop->first ? 'active' : ''}}">
+                    <img src="{{asset('storage/' . $image->path)}}" ">
+                                </div>
+                                <!-- End Carousel Item -->
+                                <div class=" carousel-item {{$loop->first ? 'active' : ''}}">
+                    <img src="{{asset('storage/' . $image->path)}}" ">
+                                </div>
+                                <!-- End Carousel Item -->
+                                <div class=" carousel-item {{$loop->first ? 'active' : ''}}">
+                    <img src="{{asset('storage/' . $image->path)}}" ">
+                                </div><!-- End Carousel Item -->
+            @endforeach
+                        <a class=" carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-            </a>
+                </a>
 
-            <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div class="featured container">
-            <div class="row gy-4">
-                <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="100">
-                    <div class="featured-item position-relative">
-                        <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                        <h4><a href="" class="stretched-link">Akreditas</a></h4>
-                        <p>Pelajari lebih lanjut tentang pencapaian akreditasi Program Studi Teknologi Rekayasa Perangkat
-                            Lunak</p>
-                    </div>
-                </div><!-- End Featured Item -->
-
-                <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="200">
-                    <div class="featured-item position-relative">
-                        <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                        <h4><a href="" class="stretched-link">Jatwal Kuliah</a></h4>
-                        <p>Dapatkan informasi terkini tentang jadwal perkuliahan untuk menunjang aktivitas akademikmu</p>
-                    </div>
-                </div><!-- End Featured Item -->
-
-                <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
-                    <div class="featured-item position-relative">
-                        <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-                        <h4><a href="" class="stretched-link">Informasi</a></h4>
-                        <p>Temukan peluang beasiswa menarik untuk Tahun Ajaran 2025/2026 dan raih impianmu!</p>
-                    </div>
-                </div><!-- End Featured Item -->
+                <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+                </a>
             </div>
-        </div>
+
+            <div class="featured container">
+                <div class="row gy-4">
+                    <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="100">
+                        <div class="featured-item position-relative">
+                            <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
+                            <h4><a href="" class="stretched-link">Akreditas</a></h4>
+                            <p>Pelajari lebih lanjut tentang pencapaian akreditasi Program Studi Teknologi Rekayasa
+                                Perangkat
+                                Lunak</p>
+                        </div>
+                    </div><!-- End Featured Item -->
+
+                    <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="200">
+                        <div class="featured-item position-relative">
+                            <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
+                            <h4><a href="" class="stretched-link">Jatwal Kuliah</a></h4>
+                            <p>Dapatkan informasi terkini tentang jadwal perkuliahan untuk menunjang aktivitas akademikmu
+                            </p>
+                        </div>
+                    </div><!-- End Featured Item -->
+
+                    <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
+                        <div class="featured-item position-relative">
+                            <div class="icon"><i class="bi bi-broadcast icon"></i></div>
+                            <h4><a href="" class="stretched-link">Informasi</a></h4>
+                            <p>Temukan peluang beasiswa menarik untuk Tahun Ajaran 2025/2026 dan raih impianmu!</p>
+                        </div>
+                    </div><!-- End Featured Item -->
+                </div>
+            </div>
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
@@ -185,38 +188,38 @@
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="swiper init-swiper">
                 <script type="application/json" class="swiper-config">
-                        {
-                            "loop": true,
-                            "speed": 600,
-                            "autoplay": {
-                                "delay": 5000
-                            },
-                            "slidesPerView": "auto",
-                            "pagination": {
-                                "el": ".swiper-pagination",
-                                "type": "bullets",
-                                "clickable": true
-                            },
-                            "breakpoints": {
-                                "320": {
-                                    "slidesPerView": 2,
-                                    "spaceBetween": 40
-                                },
-                                "480": {
-                                    "slidesPerView": 3,
-                                    "spaceBetween": 60
-                                },
-                                "640": {
-                                    "slidesPerView": 4,
-                                    "spaceBetween": 80
-                                },
-                                "992": {
-                                    "slidesPerView": 6,
-                                    "spaceBetween": 120
-                                }
-                            }
-                        }
-                    </script>
+                                                                                                                                                                                                                                                {
+                                                                                                                                                                                                                                                    "loop": true,
+                                                                                                                                                                                                                                                    "speed": 600,
+                                                                                                                                                                                                                                                    "autoplay": {
+                                                                                                                                                                                                                                                        "delay": 5000
+                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                    "slidesPerView": "auto",
+                                                                                                                                                                                                                                                    "pagination": {
+                                                                                                                                                                                                                                                        "el": ".swiper-pagination",
+                                                                                                                                                                                                                                                        "type": "bullets",
+                                                                                                                                                                                                                                                        "clickable": true
+                                                                                                                                                                                                                                                    },
+                                                                                                                                                                                                                                                    "breakpoints": {
+                                                                                                                                                                                                                                                        "320": {
+                                                                                                                                                                                                                                                            "slidesPerView": 2,
+                                                                                                                                                                                                                                                            "spaceBetween": 40
+                                                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                                                        "480": {
+                                                                                                                                                                                                                                                            "slidesPerView": 3,
+                                                                                                                                                                                                                                                            "spaceBetween": 60
+                                                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                                                        "640": {
+                                                                                                                                                                                                                                                            "slidesPerView": 4,
+                                                                                                                                                                                                                                                            "spaceBetween": 80
+                                                                                                                                                                                                                                                        },
+                                                                                                                                                                                                                                                        "992": {
+                                                                                                                                                                                                                                                            "slidesPerView": 6,
+                                                                                                                                                                                                                                                            "spaceBetween": 120
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                            </script>
                 <div class="swiper-wrapper align-items-center">
                     <div class="swiper-slide"><img src="frontend/assets/img/clients/client-1.png" class="img-fluid" alt="">
                     </div>

@@ -23,7 +23,7 @@
 
 <script src="{{asset('backend/asset/js/custom.min.js')}}"></script>
 <script src="{{asset('backend/asset/js/dlabnav-init.js')}}"></script>
-<script src="https://cdn.tailwindcss.com"></script>
+
 
 
 <script>
@@ -87,17 +87,13 @@
 <script>
   let fileQueue = [];
 
-  document
-    .getElementById("single-file-btn")
-    .addEventListener("click", () => {
-      document.getElementById("single-file-input").click();
-    });
+  document.getElementById('single-file-btn').addEventListener('click', () => {
+    document.getElementById('single-file-input').click();
+  });
 
-  document
-    .getElementById("multiple-file-btn")
-    .addEventListener("click", () => {
-      document.getElementById("multiple-file-input").click();
-    });
+  document.getElementById('multiple-file-btn').addEventListener('click', () => {
+    document.getElementById('multiple-file-input').click();
+  });
 
   function handleSingleFileUpload(event) {
     const file = event.target.files[0];
@@ -114,7 +110,7 @@
   }
 
   function formatFileSize(size) {
-    const units = ["B", "KB", "MB", "GB", "TB"];
+    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
     let unitIndex = 0;
     while (size >= 1024 && unitIndex < units.length - 1) {
       size /= 1024;
@@ -124,19 +120,16 @@
   }
 
   function addFileToQueue(file) {
-    const fileQueueElement = document.getElementById("file-queue");
-    const emptyRow = document.getElementById("empty-row");
+    const fileQueueElement = document.getElementById('file-queue');
+    const emptyRow = document.getElementById('empty-row');
     if (emptyRow) {
       emptyRow.remove();
     }
 
-    const newRow = document.createElement("tr");
+    const newRow = document.createElement('tr');
     newRow.innerHTML = `
-          <td class="py-2 px-4 border-b text-sm sm:text-base">${file.name
-      }</td>
-          <td class="py-2 px-4 border-b text-sm sm:text-base">${formatFileSize(
-        file.size
-      )}</td>
+          <td class="py-2 px-4 border-b text-sm sm:text-base">${file.name}</td>
+          <td class="py-2 px-4 border-b text-sm sm:text-base">${formatFileSize(file.size)}</td>
           <td class="py-2 px-4 border-b text-sm sm:text-base">
               <div class="w-full bg-gray-200 rounded-full h-2.5">
                   <div class="bg-purple-600 h-2.5 rounded-full" style="width: 0%;"></div>
@@ -153,52 +146,50 @@
     fileQueue.push(file);
 
     // Enable buttons
-    document.getElementById("upload-all").disabled = false;
-    document.getElementById("cancel-all").disabled = false;
-    document.getElementById("remove-all").disabled = false;
+    document.getElementById('upload-all').disabled = false;
+    document.getElementById('cancel-all').disabled = false;
+    document.getElementById('remove-all').disabled = false;
   }
 
   function uploadFile(button) {
-    const row = button.closest("tr");
-    const progressBar = row.querySelector(".bg-purple-600");
-    const statusCell = row.querySelector("td:nth-child(4)");
-    progressBar.style.width = "100%";
-    statusCell.textContent = "Uploaded";
+    const row = button.closest('tr');
+    const progressBar = row.querySelector('.bg-purple-600');
+    const statusCell = row.querySelector('td:nth-child(4)');
+    progressBar.style.width = '100%';
+    statusCell.textContent = 'Uploaded';
   }
 
   function cancelFile(button) {
-    const row = button.closest("tr");
-    const progressBar = row.querySelector(".bg-purple-600");
-    const statusCell = row.querySelector("td:nth-child(4)");
-    progressBar.style.width = "0%";
-    statusCell.textContent = "Cancelled";
+    const row = button.closest('tr');
+    const progressBar = row.querySelector('.bg-purple-600');
+    const statusCell = row.querySelector('td:nth-child(4)');
+    progressBar.style.width = '0%';
+    statusCell.textContent = 'Cancelled';
   }
 
   function removeFile(button) {
-    const row = button.closest("tr");
+    const row = button.closest('tr');
     row.remove();
-    fileQueue = fileQueue.filter(
-      (file) => file.name !== row.querySelector("td").textContent
-    );
+    fileQueue = fileQueue.filter(file => file.name !== row.querySelector('td').textContent);
     if (fileQueue.length === 0) {
-      const fileQueueElement = document.getElementById("file-queue");
-      const emptyRow = document.createElement("tr");
-      emptyRow.id = "empty-row";
-      emptyRow.classList.add("bg-gray-200");
+      const fileQueueElement = document.getElementById('file-queue');
+      const emptyRow = document.createElement('tr');
+      emptyRow.id = 'empty-row';
+      emptyRow.classList.add('bg-gray-200');
       emptyRow.innerHTML = `<td class="py-2 px-4 border-b text-sm sm:text-base" colspan="5">Que is empty</td>`;
       fileQueueElement.appendChild(emptyRow);
 
       // Disable buttons
-      document.getElementById("upload-all").disabled = true;
-      document.getElementById("cancel-all").disabled = true;
-      document.getElementById("remove-all").disabled = true;
+      document.getElementById('upload-all').disabled = true;
+      document.getElementById('cancel-all').disabled = true;
+      document.getElementById('remove-all').disabled = true;
     }
   }
 
   function uploadAllFiles() {
-    const rows = document.querySelectorAll("#file-queue tr");
-    rows.forEach((row) => {
-      const uploadButton = row.querySelector("button.bg-purple-600");
+    const rows = document.querySelectorAll('#file-queue tr');
+    rows.forEach(row => {
+      const uploadButton = row.querySelector('button.bg-purple-600');
       if (uploadButton) {
         uploadFile(uploadButton);
       }
@@ -206,9 +197,9 @@
   }
 
   function cancelAllFiles() {
-    const rows = document.querySelectorAll("#file-queue tr");
-    rows.forEach((row) => {
-      const cancelButton = row.querySelector("button.bg-yellow-500");
+    const rows = document.querySelectorAll('#file-queue tr');
+    rows.forEach(row => {
+      const cancelButton = row.querySelector('button.bg-yellow-500');
       if (cancelButton) {
         cancelFile(cancelButton);
       }
@@ -216,9 +207,9 @@
   }
 
   function removeAllFiles() {
-    const rows = document.querySelectorAll("#file-queue tr");
-    rows.forEach((row) => {
-      const removeButton = row.querySelector("button.bg-red-600");
+    const rows = document.querySelectorAll('#file-queue tr');
+    rows.forEach(row => {
+      const removeButton = row.querySelector('button.bg-red-600');
       if (removeButton) {
         removeFile(removeButton);
       }
@@ -226,23 +217,45 @@
   }
 
   // Drag and drop functionality
-  const dropZone = document.getElementById("drop-zone");
+  const dropZone = document.getElementById('drop-zone');
 
-  dropZone.addEventListener("dragover", (event) => {
+  dropZone.addEventListener('dragover', (event) => {
     event.preventDefault();
-    dropZone.classList.add("bg-gray-200");
+    dropZone.classList.add('bg-gray-200');
   });
 
-  dropZone.addEventListener("dragleave", () => {
-    dropZone.classList.remove("bg-gray-200");
+  dropZone.addEventListener('dragleave', () => {
+    dropZone.classList.remove('bg-gray-200');
   });
 
-  dropZone.addEventListener("drop", (event) => {
+  dropZone.addEventListener('drop', (event) => {
     event.preventDefault();
-    dropZone.classList.remove("bg-gray-200");
+    dropZone.classList.remove('bg-gray-200');
     const files = event.dataTransfer.files;
     for (let i = 0; i < files.length; i++) {
       addFileToQueue(files[i]);
     }
   });
+</script>
+<script>
+  function deleteFile(fileId) {
+    if (confirm('Are you sure you want to delete this file?')) {
+      fetch(`/file-delete/${fileId}`, {
+        method: 'DELETE',
+        headers: {
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('File deleted successfully.');
+            location.reload(); // Refresh halaman untuk memperbarui daftar file
+          } else {
+            alert('Failed to delete file.');
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  }
 </script>

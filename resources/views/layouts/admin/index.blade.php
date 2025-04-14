@@ -98,7 +98,6 @@
     ***********************************-->
 	<!-- Required vendors -->
 	@include('layouts.admin.script')
-
 </body>
 
 </html>

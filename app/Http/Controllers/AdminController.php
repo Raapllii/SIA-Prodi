@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\File; // Pastikan Anda sudah mengimpor model File
 
 class AdminController extends Controller
 {
@@ -32,6 +33,8 @@ class AdminController extends Controller
             return view('backend.dashboard', compact('username'));
         } elseif ($request->is('list')) {
             return view('backend.apply-job', compact('username')); // Pastikan Anda memiliki view 'backend.list'
+        } elseif ($request->is('listdosen')) {
+            return view('backend.dosen', compact('username'));
         }
     }
 

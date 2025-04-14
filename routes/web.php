@@ -3,8 +3,10 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FileController;
 use Illuminate\Foundation\Application;
 use app\Http\Controllers\IndexController;
+use App\Http\Controllers\sliderControl;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -19,8 +21,12 @@ Route::get('/login', [AuthController::class, 'authenticate']);
 Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/dashboard', [AdminController::class, 'store'])->middleware('auth');
-Route::get('/list', [AdminController::class, 'store'])->name('list');
+Route::get('/listdosen', [AdminController::class, 'store'])->name('listdosen')->middleware('auth');
+Route::get('/list', [AdminController::class, 'store'])->name('list')->middleware('auth');
 
+Route::post('/file-upload', [sliderControl::class, 'upload'])->name('file.upload');
+Route::get('/modal', [sliderControl::class, 'showModal'])->name('modal.show');
+Route::delete('/file-delete/{id}', [sliderControl::class, 'delete'])->name('file.delete');
 
 //Route::get('/', [IndexController::class, 'index']);
 

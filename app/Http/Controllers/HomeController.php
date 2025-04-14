@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\File; // Pastikan Anda sudah mengimpor model File
 
 class HomeController extends Controller
 {
-    function home()
+    public function home()
     {
-        return view('Frontand.home');
+        $images = File::all();
+        return view('Frontand.home', compact('images'));
     }
     function about()
     {
