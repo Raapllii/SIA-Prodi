@@ -26,7 +26,7 @@
           <div id="drop-zone"
             class="border-2 border-dashed border-purple-300 bg-gray-50 p-6 rounded-lg flex items-center justify-center mb-4"
             style="height: 200px">
-            <span class="text-gray-500">Drop your files here</span>
+            <span class="text-gray-500">Drop your item$item here</span>
           </div>
           <div class="bg-white shadow rounded-lg overflow-hidden mb-4">
             <table class="min-w-full bg-white">
@@ -48,11 +48,36 @@
                 </tr>
               </thead>
               <tbody id="file-queue">
-                <tr id="empty-row" class="bg-gray-200">
-                  <td class="py-2 px-4 border-b text-sm sm:text-base" colspan="5">
-                    Que is empty
-                  </td>
-                </tr>
+                @forelse ($item as $file)
+          <tr class="bg-gray-100">
+            <td class="py-2 px-4 border-b text-sm sm:text-base">
+            {{ $file->name }}
+            </td>
+            <td class="py-2 px-4 border-b text-sm sm:text-base">
+            {{ $file->size }} KB
+            </td>
+            <td class="py-2 px-4 border-b text-sm sm:text-base">
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+              <div class="bg-purple-600 h-2.5 rounded-full" style="width: {{ $file->progress }}%"></div>
+            </div>
+            </td>
+            <td class="py-2 px-4 border-b text-sm sm:text-base">
+            {{ $file->status }}
+            </td>
+            <td class="py-2 px-4 border-b text-sm sm:text-base">
+            <button class="bg-red-600 text-white px-2 py-1 rounded-full"
+              onclick="removeFile('{{ $file->id }}')">
+              Remove
+            </button>
+            </td>
+          </tr>
+        @empty
+      <tr id="empty-row" class="bg-gray-200">
+        <td class="py-2 px-4 border-b text-sm sm:text-base" colspan="5">
+        Queue is empty
+        </td>
+      </tr>
+    @endforelse
               </tbody>
             </table>
           </div>

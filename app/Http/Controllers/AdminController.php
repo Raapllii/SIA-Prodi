@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\File; // Pastikan Anda sudah mengimpor model File
+use App\Models\Dosen; // Pastikan Anda sudah mengimpor model File
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function list()
+    {
+        // Ambil semua file dari database
+        $item = File::all();
+
+        return view('layouts.admin.modal', ['item' => $item]);
+    }
     public function index()
     {
         //
@@ -34,7 +39,8 @@ class AdminController extends Controller
         } elseif ($request->is('list')) {
             return view('backend.apply-job', compact('username')); // Pastikan Anda memiliki view 'backend.list'
         } elseif ($request->is('listdosen')) {
-            return view('backend.dosen', compact('username'));
+            $data = dosen::all();
+            return view('backend.dosen', ['data' => $data], compact('username'));
         }
     }
 

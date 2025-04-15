@@ -7,6 +7,7 @@ use App\Http\Controllers\FileController;
 use Illuminate\Foundation\Application;
 use app\Http\Controllers\IndexController;
 use App\Http\Controllers\sliderControl;
+use App\Http\Controllers\DosenController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -27,6 +28,9 @@ Route::get('/list', [AdminController::class, 'store'])->name('list')->middleware
 Route::post('/file-upload', [sliderControl::class, 'upload'])->name('file.upload');
 Route::get('/modal', [sliderControl::class, 'showModal'])->name('modal.show');
 Route::delete('/file-delete/{id}', [sliderControl::class, 'delete'])->name('file.delete');
+
+Route::post('/dosen-upload', [DosenController::class, 'store'])->name('modalDosen');
+
 
 //Route::get('/', [IndexController::class, 'index']);
 

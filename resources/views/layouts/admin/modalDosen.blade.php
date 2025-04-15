@@ -15,7 +15,7 @@
             <span>Single File</span>
           </button>
         </div>
-        <input type="file" id="single-file-input" class="hidden" accept="image/jpeg, image/png"
+        <input action="{{ route('modalDosen')}}" method="POST" type="file" id="single-file-input" class="hidden" accept="image/jpeg, image/png"
           onchange="handleSingleFileUpload(event)" />
         <div id="drop-zone"
           class="border-2 border-dashed border-purple-300 bg-gray-50 p-6 rounded-lg flex items-center justify-center mb-4"
@@ -54,18 +54,30 @@
           <table class="min-w-full bg-white">
             <thead>
               <tr>
-                <th class="py-2 px-4 border-b text-left text-sm sm:text-base">Name</th>
-                <th class="py-2 px-4 border-b text-left text-sm sm:text-base">Position</th>
-                <th class="py-2 px-4 border-b text-left text-sm sm:text-base">Description</th>
+                <th class="py-2 px-4 border-b text-left text-sm sm:text-base">Nama</th>
+                <th class="py-2 px-4 border-b text-left text-sm sm:text-base">nip</th>
+                <th class="py-2 px-4 border-b text-left text-sm sm:text-base">jabatan</th>
                 <th class="py-2 px-4 border-b text-left text-sm sm:text-base">Status</th>
                 <th class="py-2 px-4 border-b text-left text-sm sm:text-base">Actions</th>
               </tr>
             </thead>
             <tbody id="file-queue">
+              @forelse ($data as $dosen)
               <tr id="empty-row" class="bg-gray-200">
-                <td class="py-2 px-4 border-b text-sm sm:text-base" colspan="5">Que is empty</td>
+                <td class="py-2 px-4 border-b text-sm sm:text-base" colspan="5">{{$dosen->nama}}</td>
+                <td class="py-2 px-4 border-b text-sm sm:text-base" colspan="5">{{$dosen->nip}}</td>
+                <td class="py-2 px-4 border-b text-sm sm:text-base" colspan="5">{{$dosen->jabatan}}</td>
+                <td>
+                  <img src="{{ asset('storage/' . $dosen->foto) }}" width="80">
+                  
+                </td>
+                @empty
+                <tr id="empty-row" class="bg-gray-200">
+                <td class="py-2 px-4 border-b text-sm sm:text-base" colspan="5">tidak ada data</td>
+                </tr>
               </tr>
             </tbody>
+            @endforelse
           </table>
         </div>
         <div class="mb-4">
