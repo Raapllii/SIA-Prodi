@@ -31,7 +31,7 @@ class sliderControl extends Controller
     public function upload(Request $request)
     {
         $request->validate([
-            'file' => 'required|file|max:2048',
+            'file' => 'required|file|max:5120',
         ]);
 
         if ($request->hasFile('file')) {

@@ -67,8 +67,8 @@
                 <li><a href="job-list.html">Job Lists</a></li>
                 <li><a href="job-view.html">Job View</a></li>
                 <li><a href="job-application.html">Job Application</a></li>
-                <li><a href={{route('list')}}>Apply Job</a></li>
-                <li><a href={{route('listdosen')}}>New Job</a></li>
+                <li><a href={{route('list')}}>Slider Foto</a></li>
+                <li><a href={{route('listdosen')}}>Dosen dan Staf</a></li>
                 <li><a href="user-profile.html">User Profile</a></li>
             </ul>
         </li>

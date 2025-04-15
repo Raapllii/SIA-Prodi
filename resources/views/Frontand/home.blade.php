@@ -5,17 +5,9 @@
     <section id="hero" class="hero section">
         <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
             @foreach ($images as $image)
-                <div class="carousel-item {{$loop->first ? 'active' : ''}}">
-                    <img src="{{asset('storage/' . $image->path)}}" ">
-                                </div>
-                                <!-- End Carousel Item -->
-                                <div class=" carousel-item {{$loop->first ? 'active' : ''}}">
-                    <img src="{{asset('storage/' . $image->path)}}" ">
-                                </div>
-                                <!-- End Carousel Item -->
-                                <div class=" carousel-item {{$loop->first ? 'active' : ''}}">
-                    <img src="{{asset('storage/' . $image->path)}}" ">
-                                </div><!-- End Carousel Item -->
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                    <img src="{{ asset('storage/' . $image->path) }}" class="d-block w-100" alt="Slide {{ $loop->iteration }}">
+                </div>
             @endforeach
                         <a class=" carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
@@ -41,7 +33,7 @@
                     <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="200">
                         <div class="featured-item position-relative">
                             <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                            <h4><a href="" class="stretched-link">Jatwal Kuliah</a></h4>
+                            <h4><a href="" class="stretched-link">Jadwal Kuliah</a></h4>
                             <p>Dapatkan informasi terkini tentang jadwal perkuliahan untuk menunjang aktivitas akademikmu
                             </p>
                         </div>

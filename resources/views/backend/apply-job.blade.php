@@ -2,12 +2,12 @@
 @section('content')
 
 	<div class="d-flex align-items-center mb-4 flex-wrap">
-		<h4 class="fs-20 font-w600  me-auto">Apply Job</h4>
+		<h4 class="fs-20 font-w600  me-auto">Slider</h4>
 		<div>
-			<a href="new-job.html" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Job</a>
+			<!-- <a href="new-job.html" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Job</a>
 			<a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"> <i class="fas fa-envelope"></i></a>
 			<a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"><i class="fas fa-phone-alt"></i></a>
-			<a href="javascript:void(0);" class="btn btn-secondary btn-sm"><i class="fas fa-info"></i></a>
+			<a href="javascript:void(0);" class="btn btn-secondary btn-sm"><i class="fas fa-info"></i></a> -->
 
 		</div>
 	</div>
@@ -104,7 +104,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				<!-- </div>
 				<div class="col-xl-6">
 					<div class="card">
 						<div class="card-body">
@@ -559,7 +559,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
