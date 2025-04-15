@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\File; // Pastikan Anda sudah mengimpor model File
+use App\Models\Dosen; // Pastikan Anda sudah mengimpor model Dosen
 
 class AdminController extends Controller
 {
@@ -32,7 +33,8 @@ class AdminController extends Controller
             $item = File::all();
             return view('backend.apply-job', ['item' => $item], compact('username')); // Pastikan Anda memiliki view 'backend.list'
         } elseif ($request->is('listdosen')) {
-            return view('backend.dosen',  compact('username'));
+            $data = Dosen::all();
+            return view('backend.dosen', ['data' => $data], compact('username')); // Pastikan Anda memiliki view 'backend.listdosen'
         }
     }
 
