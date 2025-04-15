@@ -7,9 +7,13 @@ use App\Models\File; // Pastikan Anda sudah mengimpor model File
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function list()
+    {
+        // Ambil semua file dari database
+        $item = File::all();
+
+        return view('layouts.admin.modal', ['item' => $item]);
+    }
     public function index()
     {
         //

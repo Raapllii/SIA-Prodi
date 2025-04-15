@@ -9,13 +9,7 @@ use App\Models\File;
 
 class sliderControl extends Controller
 {
-    public function list()
-    {
-        // Ambil semua file dari database
-        $item = File::all();
 
-        return view('backend.apply-job', compact('item'));
-    }
     public function delete($id)
     {
         $file = File::findOrFail($id);
