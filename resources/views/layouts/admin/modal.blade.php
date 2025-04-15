@@ -38,9 +38,7 @@
                   <th class="py-2 px-4 border-b text-left text-sm sm:text-base">
                     Size
                   </th>
-                  <th class="py-2 px-4 border-b text-left text-sm sm:text-base">
-                    Progress
-                  </th>
+
                   <th class="py-2 px-4 border-b text-left text-sm sm:text-base">
                     Status
                   </th>
