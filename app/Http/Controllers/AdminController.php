@@ -7,13 +7,6 @@ use App\Models\File; // Pastikan Anda sudah mengimpor model File
 
 class AdminController extends Controller
 {
-    public function list()
-    {
-        // Ambil semua file dari database
-        $item = File::all();
-
-        return view('layouts.admin.modal', ['item' => $item]);
-    }
     public function index()
     {
         //
@@ -36,9 +29,10 @@ class AdminController extends Controller
         if ($request->is('dashboard')) {
             return view('backend.dashboard', compact('username'));
         } elseif ($request->is('list')) {
-            return view('backend.apply-job', compact('username')); // Pastikan Anda memiliki view 'backend.list'
+            $item = File::all();
+            return view('backend.apply-job', ['item' => $item], compact('username')); // Pastikan Anda memiliki view 'backend.list'
         } elseif ($request->is('listdosen')) {
-            return view('backend.dosen', compact('username'));
+            return view('backend.dosen',  compact('username'));
         }
     }
 
